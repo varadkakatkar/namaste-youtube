@@ -1,10 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  if (isMenuOpen) return null;
   return (
     <div className="p-5 shadow-lg auto-rows-max">
       <ul className="flex flex-col mb-4 auto-rows-max gap-1">
-        <li>Home</li>
+        <li>
+          <Link to="/">Home
+          </Link>
+          </li>
         <li>Shorts</li>
         <li>Subscriptions</li>
         <li>Originals</li>
