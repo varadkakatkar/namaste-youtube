@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
+import { clearSearch } from "../utils/searchSlice";
 import { useSearchParams } from "react-router-dom";
 
 const WatchPage = () => {
@@ -9,7 +10,8 @@ const WatchPage = () => {
   const videoId = searchParams.get("v");
 
   useEffect(() => {
-    dispatch(closeMenu);
+    dispatch(closeMenu());
+    dispatch(clearSearch());
   }, [dispatch]);
 
   useEffect(() => {
