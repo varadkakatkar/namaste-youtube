@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { clearSearch } from "../utils/searchSlice";
 import { useSearchParams } from "react-router-dom";
+import CommentsContainer from "./CommentsContainer";
+import LiveChatContainer from "./LiveChatContainer";
 
 const WatchPage = () => {
   const dispatch = useDispatch();
@@ -20,7 +22,9 @@ const WatchPage = () => {
     }
   }, [videoId]);
   return (
-    <div className="flex justify-center m-10 p-10 w-full">
+    <div className="flex flex-col">
+    <div className="flex m-10 p-10 w-full gap-4">
+      <div className="flex-1 flex justify-center">  
       <iframe
         width="1000"
         height="500"
@@ -30,6 +34,12 @@ const WatchPage = () => {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       ></iframe>
+      </div>
+      <div className="flex flex-col w-96 shrink-0 h-[500px]">
+          <LiveChatContainer />
+      </div>
+    </div>
+    <CommentsContainer />
     </div>
   );
 };
